@@ -1,6 +1,6 @@
 import {motion} from 'framer-motion'
 import { a } from 'framer-motion/client'
-import { FiGithub  } from 'react-icons/fi'
+import { FiGithub } from 'react-icons/fi'
 const Header = () => {
   return (
     <header className='absolute w-full z-50 transition-all duration-300'>
