@@ -1,4 +1,6 @@
 import { motion } from 'framer-motion'
+import Spline from '@splinetool/react-spline';
+
 
 const HeroSection = () => {
   return (
@@ -40,6 +42,10 @@ const HeroSection = () => {
                 Driven to create intelligent, user-centered web solutions at the intersection of AI and innovation, with a strong focus on building scalable products that empower startups and shape the future of technology.
             </motion.p>
         </div>
+
+        {/* RIGHT SIDE  */}
+
+        {/* <Spline scene="https://prod.spline.design/EtskZCF10O0zBMV2/scene.splinecode" /> */}
 
     </section>
 
