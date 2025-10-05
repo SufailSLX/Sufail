@@ -1,7 +1,12 @@
 import {motion} from 'framer-motion'
 import { a } from 'framer-motion/client'
-import { FiGithub, FiTwitter, FiLinkedin } from 'react-icons/fi'
+import { useState } from 'react'
+import { FiGithub, FiTwitter, FiLinkedin, FiMenu, FiX } from 'react-icons/fi'
 const Header = () => {
+    // TOGGLE 
+    const [isOpen, setIsOpen] = useState(false)
+    const toggleMenu = () => setIsOpen(!isOpen)
+
   return (
     <header className='absolute w-full z-50 transition-all duration-300'>
         <div className='container mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16 md:h-20'>
@@ -89,8 +94,39 @@ const Header = () => {
             </motion.button>
 
             {/* MOBILE VIEW */}
+            <div className='md:hidden flex items-center'>
+                    <motion.button 
+                    whileTap={{ scale:0.7}}
+                    onClick={toggleMenu}>
+                        { isOpen ? <FiX className='h-6 w-6'/> : <FiMenu className='h-6 w-6'/>}
 
+
+                    </motion.button>
+            </div>
         </div>
+
+        {/* MOBILE MENU  */}
+            <motion.div
+            initial={{ opacity:0 , height:0}}
+            animate={{
+                opacity: isOpen ? 1 : 0,
+                height: isOpen ? "auto" : 0
+            }}
+            transition={{ duration: 0.5}}
+            className='md:hidden overflow-hidden bg-white dark:bg-gray-900 shadow-lg px-4 py-5 space-y-5'>
+
+                <nav className='flex flex-col space-y-3 '>
+                    {["Home", "About", "Projects", "Experience", "Contact"].map((item) => 
+                    (
+
+                        <a onClick={toggleMenu} className='text-gray-300 font-medium py-2' key={item} href='#'>
+                            {item}
+
+                        </a>
+                    ))}
+                </nav>
+                
+            </motion.div>        
     </header>
   )
 }
