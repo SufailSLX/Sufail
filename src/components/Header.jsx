@@ -125,8 +125,39 @@ const Header = () => {
                         </a>
                     ))}
                 </nav>
-                
-            </motion.div>        
+
+                <div className='pt-4 borde-t border-gray-200
+                dark:border-gray-700'>
+                    <div className='flex space-x-5'>
+
+                        <a href="#">
+                            <FiGithub className='h-5 w-5 text-gray-300' />
+                        </a>
+
+                         <a href="#">
+                            <FiLinkedin className='h-5 w-5 text-gray-300' />
+                        </a>
+
+                         <a href="#">
+                            <FiTwitter className='h-5 w-5 text-gray-300' />
+                        </a>
+                    </div>
+
+                    <button 
+                    onClick={() => {
+                        toggleMenu()
+                    }}
+
+                    className='mt-4 block w-full py-2 rounded-lg 
+                    bg-gradient-to-r from-violet-600 to-violet-400 font-bold'>
+                        Contact Me
+                    </button>
+
+                </div>
+            </motion.div> 
+
+            {/* CONTACT CARD        */}
+            
     </header>
   )
 }
