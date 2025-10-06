@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import { gsap } from "gsap"
 
 const CustomCursor = () => {
 
@@ -18,6 +19,27 @@ if(isMobile){
 useEffect(()=>{
     const cursor = cursorRef.current
     const cursorBorder = cursorBorderRef.current
+
+
+    gsap.set([cursor, cursorBorder], {
+        xPercent: -50,
+        yPercent: -50
+    })
+
+    const xTo = gsap.quickSetter(cursor, "x", {
+        duration: 02, ease: 'power3.out'
+    })
+    const yTo = gsap.quickSetter(cursor, "x", {
+        duration: 02, ease: 'power3.out'
+    })
+
+    const xToBordeer = gsap.quickTo(cursorBorder, 'y',
+        {duration: 0.5, ease: 'power3.out'}
+    )
+
+    const yToBordeer = gsap.quickTo(cursorBorder, 'y',{
+        duration: 0.5, ease: 'power3.out'}
+    )
 })
 
 
