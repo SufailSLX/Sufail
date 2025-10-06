@@ -16,54 +16,113 @@ if(isMobile){
     return null
 }
 
-useEffect(()=>{
-    const cursor = cursorRef.current
-    const cursorBorder = cursorBorderRef.current
+// useEffect(()=>{
+//     const cursor = cursorRef.current
+//     const cursorBorder = cursorBorderRef.current
 
 
-    gsap.set([cursor, cursorBorder], {
-        xPercent: -50,
-        yPercent: -50
-    })
+//     gsap.set([cursor, cursorBorder], {
+//         xPercent: -50,
+//         yPercent: -50
+//     })
 
-    const xTo = gsap.quickSetter(cursor, "x", {
-        duration: 0.2, ease: 'power3.out'
-    })
-    const yTo = gsap.quickSetter(cursor, "y", {
-        duration: 0.2, ease: 'power3.out'
-    })
+//     const xTo = gsap.quickSetter(cursor, "x", {
+//         duration: 0.2, ease: 'power3.out'
+//     })
+//     const yTo = gsap.quickSetter(cursor, "y", {
+//         duration: 0.2, ease: 'power3.out'
+//     })
 
-    const xToBorder = gsap.quickTo(cursorBorder, 'x',
-        {duration: 0.5, ease: 'power3.out'}
-    )
+//     const xToBorder = gsap.quickTo(cursorBorder, 'x',
+//         {duration: 0.5, ease: 'power3.out'}
+//     )
 
-    const yToBorder = gsap.quickTo(cursorBorder, 'y',{
-        duration: 0.5, ease: 'power3.out'}
-    )
+//     const yToBorder = gsap.quickTo(cursorBorder, 'y',{
+//         duration: 0.5, ease: 'power3.out'}
+//     )
 
-    const handleMouseMove = (e) => {
-        xTo(e.clientX)
-        yTo(e.clientY)
-        xToBorder(e.clientX)
-        yToBorder(e.clientY)
-    }
+//     const handleMouseMove = (e) => {
+//         xTo(e.clientX)
+//         yTo(e.clientY)
+//         xToBorder(e.clientX)
+//         yToBorder(e.clientY)
+//     }
 
-    window.addEventListener("mousemove", handleMouseMove)
+//     window.addEventListener("mousemove", handleMouseMove)
     
-    document.addEventListener("mousedown", () => {
-        gsap.to([cursor, cursorBorder], {
-            scale: 0.6,
-            duration: 0.2, 
-        })
-    })
+//     document.addEventListener("mousedown", () => {
+//         gsap.to([cursor, cursorBorder], {
+//             scale: 0.6,
+//             duration: 0.2, 
+//         })
+//     })
 
-    document.addEventListener("mouseup", () => {
-        gsap.to([cursor, cursorBorder], {
-            scale: 1,
-            duration: 0.2, 
-        })
-    })
+//     document.addEventListener("mouseup", () => {
+//         gsap.to([cursor, cursorBorder], {
+//             scale: 1,
+//             duration: 0.2, 
+//         })
+//     })
 
+// }, [])
+
+useEffect(() => {
+  const cursor = cursorRef.current
+  const cursorBorder = cursorBorderRef.current
+
+  if (!cursor || !cursorBorder) return
+
+  gsap.set([cursor, cursorBorder], {
+    xPercent: -50,
+    yPercent: -50
+  })
+
+  const xTo = gsap.quickSetter(cursor, "x", {
+    duration: 0.2, ease: 'power3.out'
+  })
+  const yTo = gsap.quickSetter(cursor, "y", {
+    duration: 0.2, ease: 'power3.out'
+  })
+
+  const xToBorder = gsap.quickTo(cursorBorder, 'x', {
+    duration: 0.5, ease: 'power3.out'
+  })
+  const yToBorder = gsap.quickTo(cursorBorder, 'y', {
+    duration: 0.5, ease: 'power3.out'
+  })
+
+  const handleMouseMove = (e) => {
+    xTo(e.clientX)
+    yTo(e.clientY)
+    xToBorder(e.clientX)
+    yToBorder(e.clientY)
+  }
+
+  window.addEventListener("mousemove", handleMouseMove)
+
+  const handleMouseDown = () => {
+    gsap.to([cursor, cursorBorder], {
+      scale: 0.6,
+      duration: 0.2,
+    })
+  }
+
+  const handleMouseUp = () => {
+    gsap.to([cursor, cursorBorder], {
+      scale: 1,
+      duration: 0.2,
+    })
+  }
+
+  document.addEventListener("mousedown", handleMouseDown)
+  document.addEventListener("mouseup", handleMouseUp)
+
+  // ✅ Cleanup function
+  return () => {
+    window.removeEventListener("mousemove", handleMouseMove)
+    document.removeEventListener("mousedown", handleMouseDown)
+    document.removeEventListener("mouseup", handleMouseUp)
+  }
 }, [])
 
 
