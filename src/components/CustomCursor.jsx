@@ -27,27 +27,51 @@ useEffect(()=>{
     })
 
     const xTo = gsap.quickSetter(cursor, "x", {
-        duration: 02, ease: 'power3.out'
+        duration: 0.2, ease: 'power3.out'
     })
-    const yTo = gsap.quickSetter(cursor, "x", {
-        duration: 02, ease: 'power3.out'
+    const yTo = gsap.quickSetter(cursor, "y", {
+        duration: 0.2, ease: 'power3.out'
     })
 
-    const xToBordeer = gsap.quickTo(cursorBorder, 'y',
+    const xToBorder = gsap.quickTo(cursorBorder, 'x',
         {duration: 0.5, ease: 'power3.out'}
     )
 
-    const yToBordeer = gsap.quickTo(cursorBorder, 'y',{
+    const yToBorder = gsap.quickTo(cursorBorder, 'y',{
         duration: 0.5, ease: 'power3.out'}
     )
-})
+
+    const handleMouseMove = (e) => {
+        xTo(e.clientX)
+        yTo(e.clientY)
+        xToBorder(e.clientX)
+        yToBorder(e.clientY)
+    }
+
+    window.addEventListener("mousemove", handleMouseMove)
+    
+    document.addEventListener("mousedown", () => {
+        gsap.to([cursor, cursorBorder], {
+            scale: 0.6,
+            duration: 0.2, 
+        })
+    })
+
+    document.addEventListener("mouseup", () => {
+        gsap.to([cursor, cursorBorder], {
+            scale: 1,
+            duration: 0.2, 
+        })
+    })
+
+}, [])
 
 
 
   return (
     <>
     {/* MAIN  */}
-    <dev 
+    <div 
         ref={cursorRef}
         className='fixed top-0 left-0 w-[20px] h-[20px]
         rounded-full bg-white pointer-events-none z-[999] mix-blend-difference'
