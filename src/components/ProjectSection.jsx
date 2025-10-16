@@ -31,6 +31,25 @@ const ProjectSection = () => {
       )
 
       // Title line action 
+      gsap.fromTo(
+        titleLineRef.current,
+        {
+          width: "0%",
+          opacity: 0,
+        },
+        {
+          width: "100%",
+          opacity: 1,
+          duration: 1.5,
+          ease: "power3.inOut",
+          delay: 0.3,
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 80%",
+            toggleActions: "play none none reverse",
+          }
+        }
+      )
     })
 
   return (
