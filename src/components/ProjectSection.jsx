@@ -20,14 +20,26 @@ const ProjectSection = () => {
       },
       {
         id:2,
-        title: "3D gaming Website",
-        imageSrc: '/images/project.1.png'
+        title: "Chat App",
+        imageSrc: 'public/images/chat-app-icon.webp'
+
       },
       {
         id:3,
-        title: "3D gaming Website",
-        imageSrc: '/images/project.1.png'
+        title: "Chat App",
+        imageSrc: 'public/images/chat-app-icon.webp'
+
       }
+      // {
+      //   id:2,
+      //   title: "3D gaming Website",
+      //   imageSrc: '/images/project.1.png'
+      // },
+      // {
+      //   id:3,
+      //   title: "3D gaming Website",
+      //   imageSrc: '/images/project.1.png'
+      // }
     ]
     useEffect(()=>{
       gsap.registerPlugin(ScrollTrigger)
@@ -115,7 +127,7 @@ const ProjectSection = () => {
       )
 
       //HORIZONTAL SCROLL
-      const horizontalScroll = gsap.to("panel", {
+      const horizontalScroll = gsap.to(".panel", {
         xPercent: -100 * (projectsImage.length - 1),
         ease: 'none',
         scrollTrigger: {
@@ -140,9 +152,27 @@ const ProjectSection = () => {
       const image = panel.querySelector(".project-image")
       const imageTitle = panel.querySelector(".project-title")
 
-      const tl = gsap.timeline()
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: panel,
+          containerAnimation: horizontalScroll,
+          start: "left right",
+          end: "right left",
+          scrub: true,
+        }
+      })
+
+      // IMAGE SCALE 
+      tl.fromTo(image, { scale: 0, rotate: -20,}, { scale: 1, rotate: 1,
+        duration: 0.5, })
+
+        // TITLE ANIMATIONS 
+        if (imageTitle){
+          tl.fromTo(imageTitle, { y: 30, }, { y: -100, duration: 0.3, }, 0.2 )
+        }
+
      })
-    })
+    }, [projectsImage.length])
 
   return (
     <section
