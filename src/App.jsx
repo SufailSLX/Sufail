@@ -10,6 +10,7 @@ import HeroSection from './components/HeroSection'
 import ProjectSection from './components/ProjectSection'
 import ContactSection from './components/ContactSection';
 import NotFound from './components/NotFound';
+import Footer from './components/Footer';
 
 const App = () => {
 
@@ -38,6 +39,7 @@ const App = () => {
             <AboutSection />
             <ProjectSection />
             <ContactSection />
+            <Footer />
           </>
         } />
         <Route path="*" element={<NotFound />} />
