@@ -1,3 +1,4 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { useEffect } from 'react'
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -8,6 +9,8 @@ import Header from './components/Header'
 import HeroSection from './components/HeroSection'
 import ProjectSection from './components/ProjectSection'
 import ContactSection from './components/ContactSection';
+import NotFound from './components/NotFound';
+
 const App = () => {
 
   useEffect(()=>{
@@ -18,22 +21,28 @@ const App = () => {
 
     ScrollTrigger.refresh()
 
-    // clean up scroll 
+    // clean up scroll
     return () => {
       ScrollTrigger.getAll().forEach((trigger)=> trigger.kill ())
     }
   },[])
 
   return (
-    <>
-    <Header />
-    <HeroSection />
-    <CustomCursor />
-    <AboutSection />
-    <ProjectSection />
-    <ContactSection />
-    </>
-    
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={
+          <>
+            <Header />
+            <HeroSection />
+            {/* <CustomCursor /> */}
+            <AboutSection />
+            <ProjectSection />
+            <ContactSection />
+          </>
+        } />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
