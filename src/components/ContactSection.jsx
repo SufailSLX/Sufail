@@ -4,9 +4,104 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 const ContactSection= () => {
 
-  
+  const sectionRef = useRef(null)
+  const circleRef = useRef(null)
+  const initialTextRef = useRef(null)
+  const finalTextRef = useRef(null)
+
+  useEffect(() =>{
+
+    gsap.registerPlugin(ScrollTrigger)
+
+    const cleanup = () => {
+      ScrollTrigger.getAll().forEach((st) =>{
+        if(st.vars.trigger === sectionRef.current)
+          st.kill(true)
+      })
+    }
+
+    cleanup()
+
+    gsap.set(circleRef.current, { scale: 1, backgroundColor: "white"})
+    gsap.set(initialTextRef.current, { opacity:1, scale:1})
+    gsap.set(finalTextRef.current, { opacity:0})
+    
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger:  sectionRef.current,
+      start: "top top",
+      end: "+=200%",
+      pin: true,
+      scrub: 0.5,
+      anticipatePin: 1,
+      fastScrollEnd: true,
+      preventOverlaps: true,
+      invalidOnRefresh: true,
+      }
+      
+
+    })
+    tl.to(
+      circleRef.current,
+      {
+        scale: 5,
+        backgroundColor: "#9333EA",
+        ease: "power1.inOut",
+        duration: 0.5,
+      },
+      0,
+    )
+
+    // FADE OUT TEXT 
+     tl.to(
+      initialTextRef.current,
+      {
+        opacity:0,
+        ease: "power1.inOut",
+        duration: 0.2,
+      },
+      0.1,
+    )
+
+    // MID_ZOOM 
+
+    tl.to(
+      circleRef.current,
+      {
+        scale:17, 
+        backgroundColor: "#E9D5FF",
+        boxShadow: "0 0 50px rgba(233, 213, 255, 0.3",
+        ease: 'power2.inOut',
+        duration: "0.5",
+      },
+      0.5,
+    )
+
+    // Fade In final Text
+
+    tl.to(
+      finalTextRef.current,
+      {
+        opacity: 1,
+        ease: "power1.in",
+        duration: 0.2,
+
+      },
+      0.7,
+    )
+
+    //return cleanup
+
+    return cleanup
+
+  }, [])
+
+
   return (
-    <section className='flex items-center justify-center bg-black relative '
+    <section
+    ref={sectionRef}
+    className='flex items-center justify-center bg-black relative '
     style={{ overscrollBehavior: "none"}}>
 
       {/* minal circle  */}
@@ -15,6 +110,41 @@ const ContactSection= () => {
        flex items-center justify-center relative transition-shadow duration-1000 shadow-violet-300/50 shadow-lg
        bg-gradient-to-r from-violet-400 to-pink-100'>
 
+      {/* intital text  */}
+      <p
+      ref={initialTextRef}
+      className='text-black font-bold text-base sm:text-lg md:text-xl
+      absolute inset-0 flex items-center text-center'
+      >
+
+        SCROLL DOWN
+
+      </p>
+
+      {/* Final Text */}
+      <div 
+      ref={finalTextRef}
+      className='text-center relative flex flex-col items-center justify-center
+      opacity'
+      >
+
+        <h1 className='text-black md:w-[10rem] w-[20rem] lg:scale-[0.4]
+        sm:scale=[0.25] scale=[0.07] md:font-bold text-sm
+        sm:text-base leading-non mb-5'>
+          Step Into The Future with Sufail
+        </h1>
+
+        <p className='text-black lg:w-[40rem] w-[20rem] absolute
+        sm:mt-3 mt-1 md:scale-[0.1] scale-[0.068]'>
+          Let's connect and explore the possibilities together.
+        </p>
+
+          <button className='px-10 py-2 rounded-xl bg-black hover:bg-white
+          hover:text-black transition-all duration-500
+          scale-[0.1] absolute sm:mt-9 mt:7 text-nowrap'>
+            Contact Me
+          </button>
+      </div>
        </div>
     </section>
   )
