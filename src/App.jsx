@@ -11,6 +11,7 @@ import ProjectSection from './components/ProjectSection'
 import ContactSection from './components/ContactSection';
 import NotFound from './components/NotFound';
 import Footer from './components/Footer';
+import ProgressBar from './components/ProgressBar';
 
 const App = () => {
 
@@ -40,6 +41,7 @@ const App = () => {
             <ProjectSection />
             <ContactSection />
             <Footer />
+            <ProgressBar />
           </>
         } />
         <Route path="*" element={<NotFound />} />
