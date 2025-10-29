@@ -36,7 +36,7 @@ const App = () => {
           <>
             <Header />
             <HeroSection />
-            {/* <CustomCursor /> */}
+            <CustomCursor />
             <AboutSection />
             <ProjectSection />
             <ContactSection />
