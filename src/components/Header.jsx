@@ -1,6 +1,6 @@
 import {motion, AnimatePresence} from 'framer-motion'
 import { useState } from 'react'
-import { FiGithub, FiTwitter, FiLinkedin, FiMenu, FiX } from 'react-icons/fi'
+import { FiGithub, FiTwitter, FiLinkedin, FiMenu, FiX, FiInstagram } from 'react-icons/fi'
 
 
 const Header = () => {
@@ -31,16 +31,16 @@ const Header = () => {
             }}
             className='flex items-center'>
 
-                <div className='h-10 w-10 rounded-xl bg-gradient-to-r from-gray-500 to-gray-100 flex items-center justify-center text-purple-600 font-bold text-xl mr-3'>
+                {/* <div className='h-10 w-10 rounded-xl bg-gradient-to-r from-gray-500 to-gray-100 flex items-center justify-center text-purple-600 font-bold text-xl mr-3'>
                     S
-                </div>
+                </div> */}
                 <span className='text-xl font-bold bg-gradient-to-r from-gray-600 to-gray-100 bg-clip-text text-transparent'>
                     Sufail
                 </span>
             </motion.div>
 
             {/* NAV BAR */}
-            <nav className='lg:flex hidden space-x-8'>
+            {/* <nav className='lg:flex hidden space-x-8'>
                     {["Home", "About", "Projects", "Experience", "Contact"].map((item,
                     index) => (
                             <motion.a 
@@ -60,7 +60,7 @@ const Header = () => {
                                    group-hover:w-full transition-all duration-300 '></span>
                             </motion.a>
                     ))}
-            </nav>
+            </nav> */}
 
             {/* SOCIAL ICONS  */}
             <div className='md:flex hidden items-center space-x-4'>
@@ -69,7 +69,9 @@ const Header = () => {
                 initial={{ opacity:0, scale:0.5 }}
                 animate={{opacity:1, scale:1}}
                 transition={{ delay:1.3, duration: 0.8}}
-                className='text-gray-700 dark:text-gray-300 hover:text-violet-600 dark:hover:text-violet-400 transition-colors duration-300' href="#">
+                className='text-gray-700 dark:text-gray-300 hover:text-violet-600 dark:hover:text-violet-400 transition-colors duration-300' 
+                href="https://github.com/SufailSLX"
+                >
                     <FiGithub className='w-5 h-5'/>
                 </motion.a>
 
@@ -77,7 +79,9 @@ const Header = () => {
                 initial={{ opacity:0, scale:0.5 }}
                 animate={{opacity:1, scale:1}}
                 transition={{ delay:1.3, duration: 0.8}}
-                className='text-gray-700 dark:text-gray-300 hover:text-violet-600 dark:hover:text-violet-400 transition-colors duration-300' href="#">
+                className='text-gray-700 dark:text-gray-300 hover:text-violet-600 dark:hover:text-violet-400 transition-colors duration-300' 
+                href="www.linkedin.com/in/sufail-dev"
+                >
                     <FiLinkedin className='w-5 h-5'/>
                 </motion.a>
 
@@ -86,7 +90,7 @@ const Header = () => {
                 animate={{opacity:1, scale:1}}
                 transition={{ delay:1.3, duration: 0.8}}
                 className='text-gray-700 dark:text-gray-300 hover:text-violet-600 dark:hover:text-violet-400 transition-colors duration-300' href="#">
-                    <FiTwitter className='w-5 h-5'/>
+                    <FiInstagram className='w-5 h-5'/>
                 </motion.a>
             </div>
 
@@ -137,16 +141,18 @@ const Header = () => {
                 dark:border-gray-700'>
                     <div className='flex space-x-5'>
 
-                        <a href="#">
+                        <a href="https://github.com/SufailSLX">
+
                             <FiGithub className='h-5 w-5 text-gray-300' />
                         </a>
 
-                         <a href="#">
+                         <a href="www.linkedin.com/in/sufail-dev">
+
                             <FiLinkedin className='h-5 w-5 text-gray-300' />
                         </a>
 
                          <a href="#">
-                            <FiTwitter className='h-5 w-5 text-gray-300' />
+                            <FiInstagram className='h-5 w-5 text-gray-300' />
                         </a>
                     </div>
 
@@ -177,7 +183,6 @@ const Header = () => {
                  p-4'
                  
                  >
-
 
                     <motion.div 
                     initial={{ scale: 0.8, opacity:0, y: 30}}
