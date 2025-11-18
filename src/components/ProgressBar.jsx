@@ -2,8 +2,6 @@ import { useEffect, useRef } from "react";
 import { gsap} from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-
-
 function ProgressBar() {
 
     const progressBarRef = useRef(null);
@@ -52,8 +50,6 @@ useEffect(() =>{
         })
     }
 })
-
-
 
   return (
     <div ref={progressBarRef} className='fixed top-0 left-0 w-full h-[5px] bg-gray-800 z-50'>
