@@ -1,0 +1,60 @@
+.cursor {
+  width: 15px;
+  height: 15px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: white;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 999;
+  mix-blend-mode: difference;
+}
+
+/* Outer border */
+.cursor-border {
+  width: 40px;
+  height: 40px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  border: 1px solid white;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0.5;
+  z-index: 998;
+  mix-blend-mode: difference;
+}
+
+/* Click expand animation */
+.cursor-pulse {
+  width: 30px;
+  height: 30px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  border: 1px solid yellow;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 997;
+  opacity: 0;
+}
+
+.expand {
+  animation: expandAnim 0.5s forwards;
+}
+
+@keyframes expandAnim {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(2.5);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
