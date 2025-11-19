@@ -49,7 +49,7 @@ const HeroSection = () => {
 
       {/* RIGHT SIDE  */}
 
-      {/* <Spline className="absolute xl:right-[-28] right-0 top-[-20%] lg:top-0" scene="https://prod.spline.design/EtskZCF10O0zBMV2/scene.splinecode" /> */}
+      <Spline className="absolute xl:right-[-28] right-0 top-[-20%] lg:top-0" scene="https://prod.spline.design/EtskZCF10O0zBMV2/scene.splinecode" />
     </section>
   );
 };
