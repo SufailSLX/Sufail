@@ -3,6 +3,7 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { div } from 'framer-motion/client'
 import { SlShareAlt } from 'react-icons/sl'
+import Pimg from "../assets/chat-app-icon.webp"
 
 const ProjectSection = () => {
     const sectionRef = useRef(null)
@@ -15,7 +16,7 @@ const ProjectSection = () => {
       {
         id:1,
         title: "Chat App",
-        imageSrc: 'public/images/chat-app-icon.webp'
+        imageSrc: Pimg
 
       },
       {
