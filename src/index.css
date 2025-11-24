@@ -686,3 +686,30 @@ section {
   height: 12px;
   width: 12px;
 }
+
+/* Custom Cursor Core */
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 14px;
+  height: 14px;
+  background: white;
+  border-radius: 50%;
+  pointer-events: none;
+  mix-blend-mode: difference;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+}
+
+/* Ripple */
+.cursor-ripple {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  pointer-events: none;
+  background: rgba(255, 255, 255, 0.25);
+  transform: translate(-50%, -50%);
+  z-index: 9998;
+}
