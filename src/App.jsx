@@ -12,6 +12,7 @@ import ContactSection from './components/ContactSection';
 import NotFound from './components/NotFound';
 import Footer from './components/Footer';
 import ProgressBar from './components/ProgressBar';
+import Logo from './components/Logo';
 
 const App = () => {
 
@@ -38,9 +39,10 @@ const App = () => {
             <HeroSection />
             <CustomCursor />
             <AboutSection />
-            <ProjectSection />
+            <ProjectSection />  
             <ContactSection />
             <Footer />
+             <Logo />
             <ProgressBar />
           </>
         } />
